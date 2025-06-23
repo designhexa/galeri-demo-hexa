@@ -51,20 +51,8 @@ const Login = () => {
   };
 
   return (
-    <div 
-      className="min-h-screen flex items-center justify-center relative"
-      style={{
-        backgroundImage: `url('https://cdn.pixabay.com/photo/2017/10/22/14/36/technoid-2877987_1280.jpg')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-gray-900/60 to-hexa-red/20"></div>
-      
-      {/* Login Card */}
-      <div className="relative z-10 w-full max-w-md p-8 space-y-8 bg-white/95 backdrop-blur-sm rounded-lg shadow-2xl border border-white/20">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-lg">
         <div className="text-center">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-hexa-red to-hexa-dark-red bg-clip-text text-transparent">
             Galeri Hexa
@@ -79,7 +67,7 @@ const Login = () => {
               <Input
                 type="email"
                 placeholder="Alamat email"
-                className="pl-10 bg-white/90 border-gray-200 focus:border-hexa-red"
+                className="pl-10"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -91,7 +79,7 @@ const Login = () => {
               <Input
                 type="password"
                 placeholder="Password"
-                className="pl-10 bg-white/90 border-gray-200 focus:border-hexa-red"
+                className="pl-10"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -101,14 +89,14 @@ const Login = () => {
           
           <Button 
             type="submit" 
-            className="w-full bg-gradient-to-r from-hexa-red to-hexa-dark-red hover:opacity-90 shadow-lg"
+            className="w-full bg-gradient-to-r from-hexa-red to-hexa-dark-red hover:opacity-90"
             disabled={isLoading}
           >
             {isLoading ? 'Sedang masuk...' : 'Masuk'}
           </Button>
           
-          <div className="text-center text-sm text-gray-600 mt-4 bg-white/80 p-3 rounded-md">
-            <p className="font-medium mb-1">Kredensial demo:</p>
+          <div className="text-center text-sm text-gray-500 mt-4">
+            <p>Kredensial demo:</p>
             <p>Admin: admin@example.com / password</p>
             <p>User: user@example.com / password</p>
           </div>
