@@ -20,7 +20,7 @@ const IndexContent = () => {
                 Portofolio Kami
               </span>
               <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-hexa-red to-hexa-dark-red bg-clip-text text-transparent mb-4">
-                Galeri Demo Hexa
+                Galeri Hexa
               </h1>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Lihat hasil kerja kami dalam merancang website & aplikasi dengan desain visual yang fungsional dan estetis. 
