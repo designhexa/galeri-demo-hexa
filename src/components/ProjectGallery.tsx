@@ -255,7 +255,7 @@ const ProjectGallery = () => {
   };
 
   // Fixed categories that should always appear
-  const fixedCategories = ['Website', 'Web App', 'Mobile App'];
+  const fixedCategories = ['Website', 'Web App', 'Mobile App', 'UI Design'];
   
   // Get additional categories from projects that aren't in the fixed list
   const additionalCategories = Array.from(
