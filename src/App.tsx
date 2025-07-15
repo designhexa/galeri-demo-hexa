@@ -10,6 +10,7 @@ import UserManagement from "./pages/UserManagement";
 import NotFound from "./pages/NotFound";
 import React from "react";
 import { AuthProvider, useAuth } from "./context/AuthContext";
+import { ProjectProvider } from "./context/ProjectContext";
 
 // Admin route component
 interface AdminRouteProps {
@@ -64,13 +65,15 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <AppRoutes />
-          </BrowserRouter>
-        </TooltipProvider>
+        <ProjectProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <AppRoutes />
+            </BrowserRouter>
+          </TooltipProvider>
+        </ProjectProvider>
       </AuthProvider>
     </QueryClientProvider>
   );
