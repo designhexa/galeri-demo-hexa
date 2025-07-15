@@ -303,25 +303,24 @@ const ProjectGallery = () => {
         </h2>
         
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 bg-gradient-to-r from-hexa-red/10 to-hexa-dark-red/10 px-3 py-1.5 rounded-full text-sm">
-            <span className="w-2 h-2 rounded-full animate-hexa-pulse" 
-                  style={{backgroundColor: isAdmin ? '#ea384c' : '#555555'}}></span>
-            <span className="font-medium">
-              {isAdmin ? 'Admin' : 'User'} View
-            </span>
-          </div>
-          
           {isAdmin && (
-            <HexaButton 
-              variant="hexa" 
-              size="sm" 
-              className="gap-1" 
-              onClick={handleAddNewProject} 
-              disabled={isSubmitting}
-            >
-              <Plus size={14} />
-              <span>New Project</span>
-            </HexaButton>
+            <>
+              <div className="flex items-center gap-2 bg-gradient-to-r from-hexa-red/10 to-hexa-dark-red/10 px-3 py-1.5 rounded-full text-sm">
+                <span className="w-2 h-2 rounded-full animate-hexa-pulse bg-hexa-red"></span>
+                <span className="font-medium">Admin View</span>
+              </div>
+              
+              <HexaButton 
+                variant="hexa" 
+                size="sm" 
+                className="gap-1" 
+                onClick={handleAddNewProject} 
+                disabled={isSubmitting}
+              >
+                <Plus size={14} />
+                <span>New Project</span>
+              </HexaButton>
+            </>
           )}
         </div>
       </div>

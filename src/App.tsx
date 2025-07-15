@@ -9,23 +9,7 @@ import Login from "./pages/Login";
 import UserManagement from "./pages/UserManagement";
 import NotFound from "./pages/NotFound";
 import React from "react";
-import { supabase } from "./integrations/supabase/client";
 import { AuthProvider, useAuth } from "./context/AuthContext";
-
-// Protected route component
-interface ProtectedRouteProps {
-  children: React.ReactNode;
-}
-
-const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
-  const { isAuthenticated } = useAuth();
-  
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-  
-  return <>{children}</>;
-};
 
 // Admin route component
 interface AdminRouteProps {
@@ -46,18 +30,14 @@ const AdminRoute = ({ children }: AdminRouteProps) => {
   return <>{children}</>;
 };
 
-// App routes with authentication
+// App routes without authentication requirement for main page
 const AppRoutes = () => {
   const { isAuthenticated } = useAuth();
   
   return (
     <Routes>
       <Route path="/login" element={isAuthenticated ? <Navigate to="/" replace /> : <Login />} />
-      <Route path="/" element={
-        <ProtectedRoute>
-          <Index />
-        </ProtectedRoute>
-      } />
+      <Route path="/" element={<Index />} />
       <Route path="/users" element={
         <AdminRoute>
           <UserManagement />
