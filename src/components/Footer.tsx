@@ -18,8 +18,8 @@ const Footer = () => {
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
           <div>
-            <p className="font-semibold text-xl mb-1 bg-gradient-to-r from-morph-purple to-morph-blue bg-clip-text text-transparent">Morph Gallery</p>
-            <p className="text-sm text-gray-400">A beautiful showcase for applications and websites</p>
+            <p className="font-semibold text-xl mb-1 bg-gradient-to-r from-morph-purple to-morph-blue bg-clip-text text-transparent">Galeri Hexa</p>
+            <p className="text-sm text-gray-400">Karya-karya Kami yang akan menghidupkan ide Anda</p>
           </div>
           
           <div className="flex items-center gap-6">
@@ -51,7 +51,7 @@ const Footer = () => {
             </div>
           </div>
           
-          <p className="text-sm text-gray-500">© 2024 Morph Gallery. All rights reserved.</p>
+          <p className="text-sm text-gray-500">© 2025 Hexa Integra Mandiri. All rights reserved.</p>
         </div>
       </div>
     </footer>
