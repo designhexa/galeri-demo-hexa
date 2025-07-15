@@ -57,7 +57,7 @@ const Login = () => {
           <h1 className="text-3xl font-bold bg-gradient-to-r from-hexa-red to-hexa-dark-red bg-clip-text text-transparent">
             Galeri Hexa
           </h1>
-          <p className="mt-2 text-gray-600">Masuk untuk mengakses aplikasi</p>
+          <p className="mt-2 text-gray-600">Masuk untuk mengakses panel admin</p>
         </div>
         
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
@@ -94,12 +94,6 @@ const Login = () => {
           >
             {isLoading ? 'Sedang masuk...' : 'Masuk'}
           </Button>
-          
-          <div className="text-center text-sm text-gray-500 mt-4">
-            <p>Kredensial demo:</p>
-            <p>Admin: admin@example.com / password</p>
-            <p>User: user@example.com / password</p>
-          </div>
         </form>
       </div>
     </div>

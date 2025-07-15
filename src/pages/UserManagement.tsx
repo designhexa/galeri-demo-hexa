@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/components/ui/use-toast';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -15,10 +16,11 @@ const UserManagement = () => {
   const [newUserEmail, setNewUserEmail] = useState('');
   const [newUserPassword, setNewUserPassword] = useState('');
   const [newUserName, setNewUserName] = useState('');
+  const [newUserRole, setNewUserRole] = useState<'admin' | 'user'>('user');
   const [isAddingUser, setIsAddingUser] = useState(false);
 
   // Redirect if not admin - this will be handled in App.tsx with protected routes
-  if (currentUser.role !== 'admin') {
+  if (currentUser?.role !== 'admin') {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <Alert variant="destructive" className="w-96">
@@ -39,18 +41,19 @@ const UserManagement = () => {
         email: newUserEmail,
         password: newUserPassword,
         name: newUserName,
-        role: 'user' // New users are always regular users
+        role: newUserRole
       });
       
       toast({
         title: "User added",
-        description: `${newUserName} has been added successfully`,
+        description: `${newUserName} has been added successfully as ${newUserRole}`,
       });
       
       // Reset form
       setNewUserEmail('');
       setNewUserPassword('');
       setNewUserName('');
+      setNewUserRole('user');
     } catch (error) {
       toast({
         title: "Error",
@@ -102,7 +105,7 @@ const UserManagement = () => {
           <div className="bg-white p-6 rounded-lg shadow-md mb-8">
             <h2 className="text-xl font-semibold mb-4">Add New User</h2>
             <form onSubmit={handleAddUser} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                     Name
@@ -138,6 +141,20 @@ const UserManagement = () => {
                     onChange={(e) => setNewUserPassword(e.target.value)}
                     required
                   />
+                </div>
+                <div>
+                  <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-1">
+                    Role
+                  </label>
+                  <Select value={newUserRole} onValueChange={(value: 'admin' | 'user') => setNewUserRole(value)}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select role" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="user">User</SelectItem>
+                      <SelectItem value="admin">Admin</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
               <div className="flex justify-end">
@@ -191,7 +208,7 @@ const UserManagement = () => {
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      {user.role !== 'admin' && (
+                      {user.id !== currentUser?.id && (
                         <Button 
                           variant="ghost" 
                           size="sm" 
